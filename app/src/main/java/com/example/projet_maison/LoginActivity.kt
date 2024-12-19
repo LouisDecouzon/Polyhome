@@ -45,14 +45,16 @@ class LoginActivity : AppCompatActivity() {
             intent.putExtra("token",tokenToSend)
             startActivity(intent)
         }
-        if(responseCode==400){
-            Toast.makeText(this,"Les données fournies sont incorrectes", Toast.LENGTH_SHORT).show()
+        else{
+            errorManage()
         }
-        if(responseCode==404){
-            Toast.makeText(this,"Aucun utilisateur ne correspond aux identifiants donnés", Toast.LENGTH_SHORT).show()
+
+    }
+    private fun errorManage(){
+        runOnUiThread{
+            Toast.makeText(this,"Les données fournies sont incorrectes", Toast.LENGTH_LONG).show()
         }
-        if(responseCode==500){
-            Toast.makeText(this,"Une erreur s'est produite au niveau du serveur", Toast.LENGTH_SHORT).show()
-        }
+
+
     }
 }
