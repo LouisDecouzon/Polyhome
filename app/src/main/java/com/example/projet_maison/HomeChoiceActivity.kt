@@ -1,5 +1,5 @@
 package com.example.projet_maison
-
+//page pour choisir quelle maison gerer
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle

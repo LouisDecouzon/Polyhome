@@ -1,5 +1,5 @@
 package com.example.projet_maison
-
+//page de creation de comtpe
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText

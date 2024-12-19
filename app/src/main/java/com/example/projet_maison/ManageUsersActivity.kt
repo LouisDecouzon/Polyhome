@@ -1,5 +1,5 @@
 package com.example.projet_maison
-
+//page de gestion des utilisateurs de la maison choisie
 import android.os.Bundle
 import android.view.View
 import android.widget.ListView
@@ -12,10 +12,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.androidtp2.Api
 import com.google.gson.Gson
 import com.google.gson.JsonArray
-import com.google.gson.JsonObject
-import org.json.JSONObject
 
-class ManageUsers : AppCompatActivity() {
+class ManageUsersActivity : AppCompatActivity() {
 
     private lateinit var token: String;
     private lateinit var houseId: String;
@@ -60,19 +58,11 @@ class ManageUsers : AppCompatActivity() {
 
             updateUsers()
         }
-        if(responseCode==400){
-            println("les données sont incorrectes")
+        else{
+            runOnUiThread {
+                Toast.makeText(this,"Erreur en chargeant les données", Toast.LENGTH_LONG).show()
+            }
         }
-        if(responseCode==403){
-            println("Accès interdit")
-        }
-        if(responseCode==500){
-            println("Problème au niveau du serveur")
-        }
-        if (responseCode == 200 && userListRaw == null) {
-            println("Code 200 mais resultat vide")
-        }
-
     }
 
     private fun initUsersListView() {
@@ -102,15 +92,7 @@ class ManageUsers : AppCompatActivity() {
                 Toast.makeText(this,"Utilisateur ajouté", Toast.LENGTH_LONG).show()
             }
         }
-        if(responseCode==400){
-            println("Les données fournies sont incorrectes")
-        }
-        if (responseCode == 403) {
-            println("Accès refusé")
-        }
-        if (responseCode == 500) {
-            println("Une erreur s'est produite au niveau du serveur")
-        }
+        errorManage(responseCode)
     }
 
     fun deleteUser(view: View){
@@ -128,15 +110,27 @@ class ManageUsers : AppCompatActivity() {
                 Toast.makeText(this,"Suppression bien effectuée", Toast.LENGTH_LONG).show()
             }
         }
+        errorManage(responseCode)
+
+    }
+    private fun errorManage(responseCode:Int){
         if(responseCode==400){
-            println("Les données fournies sont incorrectes")
+            //println("Les données fournies sont incorrectes")
+            runOnUiThread {
+                Toast.makeText(this,"L'utilisateur saisi n'existe pas", Toast.LENGTH_LONG).show()
+            }
         }
         if (responseCode == 403) {
-            println("Accès refusé")
+            //println("Accès refusé")
+            runOnUiThread {
+                Toast.makeText(this,"Accès refusé", Toast.LENGTH_LONG).show()
+            }
         }
         if (responseCode == 500) {
-            println("Une erreur s'est produite au niveau du serveur")
+            //println("Une erreur s'est produite au niveau du serveur")
+            runOnUiThread {
+                Toast.makeText(this,"L'utilisateur saisi n'existe pas", Toast.LENGTH_LONG).show()
+            }
         }
-
     }
 }

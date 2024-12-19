@@ -1,5 +1,5 @@
 package com.example.projet_maison
-
+//page de la maison choisie
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -269,7 +269,7 @@ class HomeActivity : AppCompatActivity() {
 
 
     fun manageUsers(view:View){
-        val intent= Intent(this,ManageUsers::class.java)
+        val intent= Intent(this,ManageUsersActivity::class.java)
         intent.putExtra("token",token)
         intent.putExtra("houseId",houseId)
         startActivity(intent)
