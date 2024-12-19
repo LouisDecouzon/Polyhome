@@ -8,20 +8,6 @@
     android:background="@drawable/maison"
     tools:context=".HomeActivity">
 
-    <Button
-        android:id="@+id/btnManageUsers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:backgroundTint="#f0abab"
-        android:onClick="manageUsers"
-        android:text="Gérer les utilisateurs"
-        android:textAlignment="center"
-        android:textColor="#d00c53"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listDevices" />
-
     <LinearLayout
         android:id="@+id/controlOne"
         android:layout_width="wrap_content"
@@ -173,16 +159,46 @@
         <ListView
             android:id="@+id/listViewShutters"
             android:layout_width="256dp"
-            android:layout_height="256dp">
+            android:layout_height="256dp"
+            tools:visibility="visible">
 
         </ListView>
 
         <ListView
             android:id="@+id/listViewLights"
             android:layout_width="256dp"
-            android:layout_height="256dp">
+            android:layout_height="256dp"
+            tools:visibility="visible">
 
         </ListView>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtViewHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Pensez à selectionner un périphérique"
+        android:textColor="#ffffff"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listDevices" />
+
+    <Button
+        android:id="@+id/btnManageUsers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#f0abab"
+        android:onClick="manageUsers"
+        android:text="Gérer les utilisateurs"
+        android:textAlignment="center"
+        android:textColor="#d00c53"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewHint" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

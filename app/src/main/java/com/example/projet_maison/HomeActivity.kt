@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -97,17 +98,10 @@ class HomeActivity : AppCompatActivity() {
             println(lights)
             updateDevices()
         }
-        if (responseCode == 400) {
-            println("Données fournies incorrectes")
-        }
-        if (responseCode == 403) {
-            println("Accès interdit")
-        }
-        if (responseCode == 500) {
-            println("Erreur Serveur")
-        }
-        if (responseCode == 200 && devicesListRaw == null) {
-            println("Code 200 mais resultat vide")
+        else{
+            runOnUiThread {
+                Toast.makeText(this,"Erreur lors du chargement des données", Toast.LENGTH_LONG).show()
+            }
         }
     }
 
@@ -239,12 +233,7 @@ class HomeActivity : AppCompatActivity() {
                 initDevices()
             }
         }
-        if (responseCode == 403) {
-            println("Accès refusé")
-        }
-        if (responseCode == 500) {
-            println("Une erreur s'est produite au niveau du serveur")
-        }
+        errorManage(responseCode)
     }
         fun turnOn(view: View) {
             sendCommand(Command("TURN ON"),selectedDeviceType,selectedDeviceId)
@@ -266,12 +255,31 @@ class HomeActivity : AppCompatActivity() {
             sendCommand(Command("STOP"),selectedDeviceType,selectedDeviceId)
         }
 
-
-
     fun manageUsers(view:View){
         val intent= Intent(this,ManageUsersActivity::class.java)
         intent.putExtra("token",token)
         intent.putExtra("houseId",houseId)
         startActivity(intent)
+    }
+
+    private fun errorManage(responseCode:Int){
+        if (responseCode == 400) {
+            //println("Données fournies incorrectes")
+            runOnUiThread {
+                Toast.makeText(this,"Données transmises incorrectes", Toast.LENGTH_LONG).show()
+            }
+        }
+        if (responseCode == 403) {
+            //println("Accès interdit")
+            runOnUiThread {
+                Toast.makeText(this,"Accès refusé", Toast.LENGTH_LONG).show()
+            }
+        }
+        if (responseCode == 500) {
+            //println("Erreur Serveur")
+            runOnUiThread {
+                Toast.makeText(this,"Erreur Serveur", Toast.LENGTH_LONG).show()
+            }
+        }
     }
 }
