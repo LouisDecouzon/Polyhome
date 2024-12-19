@@ -54,6 +54,7 @@ class HomeActivity : AppCompatActivity() {
         houseId = intent.getStringExtra("houseId").toString()
         listViewShutters = findViewById(R.id.listViewShutters)
         listViewLights = findViewById(R.id.listViewLights)
+        findViewById<Button>(R.id.btnToggle).text="Lumières"
         displayHouseId()
         initDevicesListView()
         initDevices()
@@ -182,6 +183,7 @@ class HomeActivity : AppCompatActivity() {
     }
     fun toggle(view:View){
         switch()
+        findViewById<Button>(R.id.btnToggle).text=if(isShuttersAvailable)"Volets" else "Lumières"
     }
 
     private fun switch() {
@@ -258,12 +260,10 @@ class HomeActivity : AppCompatActivity() {
 
         fun close(view: View) {
             sendCommand(Command("CLOSE"),selectedDeviceType,selectedDeviceId)
-
         }
 
         fun stop(view: View) {
             sendCommand(Command("STOP"),selectedDeviceType,selectedDeviceId)
-
         }
 
 
