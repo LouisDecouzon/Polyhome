@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/maison"
+    tools:context=".HomeActivity">
+
+    <Button
+        android:id="@+id/btnManageUsers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:backgroundTint="#f0abab"
+        android:onClick="manageUsers"
+        android:text="Gérer les utilisateurs"
+        android:textAlignment="center"
+        android:textColor="#d00c53"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listDevices" />
+
+    <LinearLayout
+        android:id="@+id/controlOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/btnManageUsers"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/listDevices"
+        app:layout_constraintTop_toBottomOf="@+id/controlAll">
+
+        <Button
+            android:id="@+id/btnOpen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#f0abab"
+            android:onClick="open"
+            android:text="Ouvrir"
+            android:textColor="#d00c53" />
+
+        <Button
+            android:id="@+id/btnClose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#f0abab"
+            android:onClick="close"
+            android:text="Fermer"
+            android:textColor="#d00c53" />
+
+        <Button
+            android:id="@+id/btnStop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#f0abab"
+            android:onClick="stop"
+            android:text="Arreter"
+            android:textAlignment="center"
+            android:textColor="#d00c53" />
+
+        <Button
+            android:id="@+id/btnTurnOn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#f0abab"
+            android:onClick="turnOn"
+            android:text="Allumer"
+            android:textColor="#d00c53" />
+
+        <Button
+            android:id="@+id/btnTurnOff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#f0abab"
+            android:onClick="turnOff"
+            android:text="Éteindre"
+            android:textColor="#d00c53" />
+
+        <Button
+            android:id="@+id/btnToggle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#f0abab"
+            android:onClick="toggle"
+            android:text="Toggle"
+            android:textColor="#d00c53" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/controlAll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtHouseId">
+
+        <Button
+            android:id="@+id/btnTurnOnAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#f0abab"
+            android:insetRight="5dp"
+            android:onClick="interactWithAll"
+            android:text="Allumer tout"
+            android:textColor="#d00c53" />
+
+        <Button
+            android:id="@+id/btnTurnOffAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#f0abab"
+            android:insetLeft="5dp"
+            android:onClick="interactWithAll"
+            android:text="Eteindre Tout"
+            android:textColor="#d00c53" />
+
+        <Button
+            android:id="@+id/btnOpenAll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#f0abab"
+            android:insetRight="10dp"
+            android:onClick="interactWithAll"
+            android:text="Ouvrir Tout"
+            android:textColor="#d00c53" />
+
+        <Button
+            android:id="@+id/btnCloseAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#f0abab"
+            android:insetLeft="10dp"
+            android:onClick="interactWithAll"
+            android:text="Fermer Tout"
+            android:textColor="#d00c53" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtHouseId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="610dp" />
+
+    <LinearLayout
+        android:id="@+id/listDevices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/controlAll">
+
+        <ListView
+            android:id="@+id/listViewShutters"
+            android:layout_width="256dp"
+            android:layout_height="256dp">
+
+        </ListView>
+
+        <ListView
+            android:id="@+id/listViewLights"
+            android:layout_width="256dp"
+            android:layout_height="256dp">
+
+        </ListView>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
