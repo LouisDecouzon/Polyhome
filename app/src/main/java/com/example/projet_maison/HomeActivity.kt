@@ -150,13 +150,14 @@ class HomeActivity : AppCompatActivity() {
     private fun initDevicesListView() {
         listViewShutters.adapter = shutterAdapter
         listViewLights.adapter = lightAdapter
-
         listViewLights.setOnItemClickListener { _, clickedView, _, _ ->
             val tempSelectedDevice =
                 clickedView.findViewById<TextView>(R.id.column1).text.toString()
             val delimiter1 = " "
             selectedDeviceId = tempSelectedDevice.split(delimiter1)[1]
             selectedDeviceType = tempSelectedDevice.split(delimiter1)[0]
+            findViewById<TextView>(R.id.txtViewSelectedDeviceName).text=selectedDeviceType+" "+selectedDeviceId
+
 
         }
         listViewShutters.setOnItemClickListener { _, clickedView, _, _ ->
@@ -165,6 +166,7 @@ class HomeActivity : AppCompatActivity() {
             val delimiter1 = " "
             selectedDeviceId = tempSelectedDevice.split(delimiter1)[1]
             selectedDeviceType = tempSelectedDevice.split(delimiter1)[0]
+            findViewById<TextView>(R.id.txtViewSelectedDeviceName).text=selectedDeviceType+" "+selectedDeviceId
         }
 
     }
