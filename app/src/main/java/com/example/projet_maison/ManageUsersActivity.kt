@@ -20,6 +20,7 @@ class ManageUsersActivity : AppCompatActivity() {
     private var users = ArrayList<UserNOwnership>()
     private lateinit var usersAdapter: UsersAdapter
     private lateinit var listViewUsers: ListView
+    private lateinit var houseOwner:String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +56,7 @@ class ManageUsersActivity : AppCompatActivity() {
                 val currentUser = gson.fromJson(user, UserNOwnership::class.java)
                 users.add(currentUser)
             }
-
+            houseOwner=users[0].userLogin
             updateUsers()
         }
         else{
@@ -97,8 +98,17 @@ class ManageUsersActivity : AppCompatActivity() {
 
     fun deleteUser(view: View){
         val userToDelete=findViewById<TextView>(R.id.editTxtUserToManage).text.toString()
-        val userToDeleteCredentials=User(userToDelete)
-        Api().delete<User>("https://polyhome.lesmoulinsdudev.com/api/houses/$houseId/users",userToDeleteCredentials,::deleteUserSuccess,token)
+        if(userToDelete!=houseOwner){
+            val userToDeleteCredentials=User(userToDelete)
+            Api().delete<User>("https://polyhome.lesmoulinsdudev.com/api/houses/$houseId/users",userToDeleteCredentials,::deleteUserSuccess,token)
+        }
+        else{
+            findViewById<TextView>(R.id.editTxtUserToManage).text=""
+            runOnUiThread {
+                Toast.makeText(this,"Attention, vous allez perdre l'accès", Toast.LENGTH_LONG).show()
+            }
+        }
+
     }
 
     private fun deleteUserSuccess(responseCode:Int){

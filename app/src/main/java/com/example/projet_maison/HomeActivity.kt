@@ -99,6 +99,7 @@ class HomeActivity : AppCompatActivity() {
             updateDevices()
         }
         else{
+            println(responseCode)
             runOnUiThread {
                 Toast.makeText(this,"Erreur lors du chargement des données", Toast.LENGTH_LONG).show()
             }
